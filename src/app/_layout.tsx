@@ -3,6 +3,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { theme } from "../lib/theme";
+import "../../global.css";
 
 export default function Layout() {
   return (
@@ -56,12 +57,13 @@ export default function Layout() {
         name="premium"
         options={{
           title: "Premium",
+          headerShown: false,
           tabBarStyle: {
             backgroundColor: theme.colorBlack,
           },
-          headerStyle: {
-            backgroundColor: theme.colorBlack,
-          },
+          // headerStyle: {
+          //   backgroundColor: theme.colorBlack,
+          // },
           tabBarIcon: ({ size, color }) => (
             <Entypo name="spotify" size={size} color={color} />
           ),
