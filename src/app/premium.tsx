@@ -2,14 +2,16 @@ import { Text, ScrollView, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Feather from "@expo/vector-icons/Feather";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import PremiumAvailableCard from "../components/premium/premium-available-plan";
+import PremiumCard from "../components/premium/premium-card";
 
 export default function App() {
   return (
     <SafeAreaView className="h-full px-4 py-4 bg-[#000000]">
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         <View className="flex flex-row items-center gap-2 mt-8">
           <Entypo name="spotify" size={24} color="#FFFFFF" />
           <Text className="text-[#FFFFFF] font-semibold text-lg">Premium</Text>
@@ -32,41 +34,54 @@ export default function App() {
             premium before.
           </Text>
         </View>
-        <View className="mt-10 text-[#FFFFFF] bg-[#242424] py-6 px-4 rounded-md">
-          <Text className="text-2xl font-bold text-[#FFFFFF]">
-            Why join Premium?
-          </Text>
-          <View className="flex flex-col mt-6 gap-y-4">
-            <View className="flex flex-row items-center gap-x-2">
-              <Ionicons name="megaphone-outline" size={30} color="#FFFFFF" />
-              <Text className="text-[#FFFFFF]">Ad-free music listening</Text>
-            </View>
-            <View className="flex flex-row items-center gap-x-2">
-              <Ionicons name="download-outline" size={30} color="#FFFFFF" />
-              <Text className="text-[#FFFFFF] text-lg">
-                Download to listen offline
-              </Text>
-            </View>
-            <View className="flex flex-row items-center gap-x-2">
-              <MaterialIcons name="loop" size={30} color="#FFFFFF" />
-              <Text className="text-[#FFFFFF] ">Play song in any order</Text>
-            </View>
-            <View className="flex flex-row items-center gap-x-2">
-              <Feather name="headphones" size={30} color="#FFFFFF" />
-              <Text className="text-[#FFFFFF] ">High audio quality</Text>
-            </View>
-            <View className="flex flex-row items-center gap-x-2">
-              <Feather name="users" size={30} color="#FFFFFF" />
-              <Text className="text-[#FFFFFF] ">
-                Listen with friends in real time
-              </Text>
-            </View>
-            <View className="flex flex-row items-center gap-x-2">
-              <MaterialIcons name="queue-music" size={30} color="#FFFFFF" />
-              <Text className="text-[#FFFFFF] ">Organize listening queue</Text>
-            </View>
-          </View>
-        </View>
+        <PremiumAvailableCard />
+
+        <Text className="mt-10 text-2xl text-[#FFFFFF]  font-bold">
+          Available Plans
+        </Text>
+        <PremiumCard
+          heading="Mini"
+          subHeading="₹29 for 1 week"
+          textOne="1 mobile-only Premium account"
+          textTwo="Offline listening of up to 30 songs on 1 device"
+          textThree="One-time payment"
+          textFour="Basic audio quality"
+          buttonText="Get Premium Mini"
+        />
+        <PremiumCard
+          heading="Individual"
+          subHeading="₹119 for 2 months"
+          textOne="1 Premium account"
+          textTwo="Cancel anytime"
+          textThree="Subscribe or one-time payment"
+          buttonText="Get Premium Individual"
+        />
+        <PremiumCard
+          heading="Family"
+          subHeading="₹179 for 2 months"
+          textOne="Up to 6 Premium accounts"
+          textTwo="Control content marked as explicit"
+          textThree="Cancel anytime"
+          textFour="Subscribe or one-time payment"
+          buttonText="Get Premium Family"
+        />
+        <PremiumCard
+          heading="Duo"
+          subHeading="₹149 for 2 months"
+          textOne="2 Premium accounts"
+          textTwo="Cancel anytime"
+          textThree="Subscribe or one-time payment"
+          buttonText="Get Premium Duo"
+        />
+        <PremiumCard
+          heading="Student"
+          subHeading="₹59 for 2 months"
+          textOne="1 verified Premium account"
+          textTwo="Discount for eligible students"
+          textThree="Cancel anytime"
+          textFour="Subscribe or one-time payment"
+          buttonText="Get Premium Student"
+        />
       </ScrollView>
     </SafeAreaView>
   );
