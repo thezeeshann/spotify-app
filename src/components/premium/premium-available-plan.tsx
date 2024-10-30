@@ -9,6 +9,7 @@ const PremiumAvailableCard = () => {
       <Text className="text-2xl font-bold text-[#FFFFFF]">
         Why join Premium?
       </Text>
+      <View className="h-[1px] bg-[#7A7A7A] mt-8" />
       <View className="flex flex-col mt-6 gap-y-4">
         <View className="flex flex-row items-center gap-x-2">
           <Ionicons name="megaphone-outline" size={30} color="#FFFFFF" />

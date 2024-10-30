@@ -47,6 +47,7 @@ export default function App() {
           textThree="One-time payment"
           textFour="Basic audio quality"
           buttonText="Get Premium Mini"
+          description="Terms apply."
         />
         <PremiumCard
           heading="Individual"
@@ -55,6 +56,9 @@ export default function App() {
           textTwo="Cancel anytime"
           textThree="Subscribe or one-time payment"
           buttonText="Get Premium Individual"
+          subscriptionColor="Individual"
+          subscriptionPrice="₹119 for 2 months"
+          description="₹119 for 2 months, then ₹119 per month after. Offer only available if you haven't tried Premium before. Terms apply."
         />
         <PremiumCard
           heading="Family"
@@ -64,6 +68,9 @@ export default function App() {
           textThree="Cancel anytime"
           textFour="Subscribe or one-time payment"
           buttonText="Get Premium Family"
+          subscriptionColor="Family"
+          subscriptionPrice="₹179 for 2 months"
+          description="₹179 for 2 months, then ₹179 per month after. Offer only available if you haven't tried Premium before. For up to 6 family members residing at the same address. Terms apply."
         />
         <PremiumCard
           heading="Duo"
@@ -72,6 +79,9 @@ export default function App() {
           textTwo="Cancel anytime"
           textThree="Subscribe or one-time payment"
           buttonText="Get Premium Duo"
+          subscriptionColor="Duo"
+          subscriptionPrice="₹149 for 2 months"
+          description="₹149 for 2 months, then ₹149 per month after. Offer only available if you haven't tried Premium before. For couples who reside at the same address. Terms apply."
         />
         <PremiumCard
           heading="Student"
@@ -81,6 +91,9 @@ export default function App() {
           textThree="Cancel anytime"
           textFour="Subscribe or one-time payment"
           buttonText="Get Premium Student"
+          subscriptionColor="Student"
+          subscriptionPrice="₹59 for 2 months"
+          description="₹59 for 2 months, then ₹59 per month after. Offer available only to students at an accredited higher education institution and if you haven't tried Premium before. Terms apply."
         />
       </ScrollView>
     </SafeAreaView>
