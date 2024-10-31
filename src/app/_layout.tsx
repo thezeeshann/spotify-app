@@ -27,6 +27,10 @@ export default function Layout() {
         name="search"
         options={{
           title: "Search",
+          headerTitleStyle: {
+            color: theme.colorWhite,
+            fontWeight: "bold",
+          },
           tabBarStyle: {
             backgroundColor: theme.colorBlack,
           },
@@ -61,9 +65,9 @@ export default function Layout() {
           tabBarStyle: {
             backgroundColor: theme.colorBlack,
           },
-          // headerStyle: {
-          //   backgroundColor: theme.colorBlack,
-          // },
+          headerStyle: {
+            backgroundColor: theme.colorBlack,
+          },
           tabBarIcon: ({ size, color }) => (
             <Entypo name="spotify" size={size} color={color} />
           ),
