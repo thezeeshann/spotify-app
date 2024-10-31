@@ -7,4 +7,7 @@ export const theme = {
   colorBlue: "#A5BBD1",
   colorOrange: "#FFC862",
   colorViolet: "#C4B1D4",
+  colorMusic: "#DC148C",
+  colorPodcasts: "#006450",
+  colorLiveEvents: "#8400E7",
 };
