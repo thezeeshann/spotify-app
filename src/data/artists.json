@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "artistsName": "A.R Rahman",
+    "category": "Artist",
+    "image": "https://i.pinimg.com/564x/8a/33/7e/8a337e8142145d98801ea4a5700d60fb.jpg"
+  },
+  {
+    "id": 2,
+    "artistsName": "Arijit Singh",
+    "category": "Artist",
+    "image": "https://i.pinimg.com/564x/b9/52/e0/b952e054e9951d34077a5a3b75889b02.jpg"
+  }
+]
