@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, Text, View, Image, FlatList } from "react-native";
+import { ScrollView, Text, View, Image } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Octicons from "@expo/vector-icons/Octicons";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -24,9 +24,9 @@ export default function App() {
           </View>
         </View>
 
-        <View className="flex flex-row items-center justify-between mt-6">
+        <View className="flex flex-row items-center justify-between mt-6 ">
           <View className="flex flex-row items-center gap-x-4">
-            <View className="flex flex-row ">
+            <View className="flex flex-row">
               <AntDesign name="arrowdown" size={15} color="#FFFFFF" />
               <AntDesign name="arrowup" size={15} color="#FFFFFF" />
             </View>
@@ -35,7 +35,7 @@ export default function App() {
           <Octicons name="apps" size={24} color="#FFFFFF" />
         </View>
 
-        <View className="flex flex-row items-center mt-6 border-2 border-red-500 gap-x-3">
+        <View className="flex flex-row items-center mt-6 gap-x-3">
           <View>
             <Image
               className="w-[60px] h-[60px] rounded-full"
@@ -49,7 +49,7 @@ export default function App() {
             <Text className="text-[#dfd3d3] text-base">Artist</Text>
           </View>
         </View>
-        <View className="flex flex-row items-center mt-6 border-2 border-red-500 gap-x-3">
+        <View className="flex flex-row items-center mt-6 gap-x-3">
           <View>
             <Image
               className="w-[60px] h-[60px] rounded-full"
@@ -64,9 +64,15 @@ export default function App() {
           </View>
         </View>
 
-        <View className="flex flex-row items-center gap-x-4">
-          <View className="bg-[#333333] p-4 rounded-full">
-            <Ionicons name="add" size={24} color="#FFFFFF" />
+        <View className="flex flex-row items-center mt-4 gap-x-4">
+          <View className="bg-[#333333] p-5 rounded-full">
+            <Ionicons name="add" size={30} color="#FFFFFF" />
+          </View>
+          <Text className="text-[#FFFFFF]">Add artists</Text>
+        </View>
+        <View className="flex flex-row items-center mt-4 gap-x-4">
+          <View className="bg-[#333333] p-5 rounded-md">
+            <Ionicons name="add" size={30} color="#FFFFFF" />
           </View>
           <Text className="text-[#FFFFFF]">Add artists</Text>
         </View>
