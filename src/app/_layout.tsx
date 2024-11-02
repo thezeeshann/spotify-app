@@ -12,6 +12,7 @@ export default function Layout() {
         name="index"
         options={{
           title: "Home",
+          headerShown: false,
           tabBarStyle: {
             backgroundColor: theme.colorBlack,
           },
@@ -27,9 +28,9 @@ export default function Layout() {
         name="search"
         options={{
           title: "Search",
+          headerShown: false,
           headerTitleStyle: {
             color: theme.colorWhite,
-            fontWeight: "bold",
           },
           tabBarStyle: {
             backgroundColor: theme.colorBlack,
@@ -46,6 +47,7 @@ export default function Layout() {
         name="library"
         options={{
           title: "Library",
+          headerShown: false,
           tabBarStyle: {
             backgroundColor: theme.colorBlack,
           },
