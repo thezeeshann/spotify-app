@@ -6,8 +6,13 @@ import SearchCard from "../components/search/search-card";
 export default function App() {
   return (
     <SafeAreaView className="h-full px-4 py-4 bg-[#000000]">
-      <ScrollView>
-        <View className="relative">
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
+        <Text className="text-[#FFFFFF] font-bold text-2xl">search</Text>
+
+        <View className="relative mt-6">
           <TextInput
             className="p-3 pl-10 bg-white rounded-md placeholder:font-semibold"
             placeholder="What do you want to listen to?"
