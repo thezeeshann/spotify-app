@@ -4,8 +4,14 @@ import PopularAlbums from "../components/home/popular-albums";
 import TopMixes from "../components/home/top-mixes";
 import RecommendedForYou from "../components/home/recommended-for-you";
 import Recents from "../components/home/recent";
+import Header from "../components/home/header";
+import { useState } from "react";
+import Music from "../components/home/music/home";
+import Podcasts from "../components/home/podcasts/home";
 
 export default function App() {
+  const [tabName, setTabName] = useState("All");
+
   return (
     <SafeAreaView className="h-full px-4 py-4 bg-[#000000]">
       <ScrollView
@@ -13,63 +19,63 @@ export default function App() {
         showsHorizontalScrollIndicator={false}
       >
         <View className="flex flex-row flex-wrap items-center mt-6 gap-x-2 gap-y-2">
-          <View className="bg-[#3BE377] rounded-full px-6 py-2">
-            <Text className="text-[#333333] text-lg">All</Text>
+          <View
+            className={`${tabName === "All" ? "bg-[#3BE377]" : "bg-[#333333]"} rounded-full px-6 py-2`}
+          >
+            <Text
+              onPress={() => setTabName("All")}
+              className={` ${tabName === "All" ? "text-[#333333]" : "text-[#FFFFFF]"}  text-lg`}
+            >
+              All
+            </Text>
           </View>
-          <View className="bg-[#333333] rounded-full px-6 py-2">
-            <Text className="text-[#FFFFFF] text-lg">Music</Text>
+          <View
+            className={`${tabName === "Music" ? "bg-[#3BE377]" : "bg-[#333333]"} rounded-full px-6 py-2`}
+          >
+            <Text
+              onPress={() => setTabName("Music")}
+              className={` ${tabName === "Music" ? "text-[#333333]" : "text-[#FFFFFF]"}  text-lg`}
+            >
+              Music
+            </Text>
           </View>
-          <View className="bg-[#333333] rounded-full px-6 py-2">
-            <Text className="text-[#FFFFFF] text-lg">Podcasts</Text>
-          </View>
-        </View>
-
-        <View className="flex flex-row flex-wrap w-full mt-8 gap-x-2 gap-y-2">
-          <View className=" bg-[#333333] flex flex-row flex-wrap items-center gap-x-3 w-[160px] rounded-md ">
-            <Image
-              source={{
-                uri: "https://i.scdn.co/image/ab676161000051748f553f96d564d1005a92d131",
-              }}
-              className="w-[70px] h-[70px]"
-            />
-            <Text className="text-[#FFFFFF] text-lg font-bold">Shubh</Text>
-          </View>
-          <View className="bg-[#333333] flex flex-row items-center gap-x-3 w-[160px] rounded-md ">
-            <Image
-              source={{
-                uri: "https://i.scdn.co/image/ab676161000051748f553f96d564d1005a92d131",
-              }}
-              className="w-[70px] h-[70px]"
-            />
-            <Text className="text-[#FFFFFF] text-lg font-bold">Shubh</Text>
-          </View>
-          <View className="bg-[#333333] flex flex-row items-center gap-x-3 w-[160px] rounded-md ">
-            <Image
-              source={{
-                uri: "https://i.scdn.co/image/ab676161000051748f553f96d564d1005a92d131",
-              }}
-              className="w-[70px] h-[70px]"
-            />
-            <Text className="text-[#FFFFFF] text-lg font-bold">Shubh</Text>
-          </View>
-          <View className="bg-[#333333] flex flex-row items-center gap-x-3 w-[160px] rounded-md ">
-            <Image
-              source={{
-                uri: "https://i.scdn.co/image/ab676161000051748f553f96d564d1005a92d131",
-              }}
-              className="w-[70px] h-[70px]"
-            />
-            <Text className="text-[#FFFFFF] text-lg font-bold">Shubh</Text>
+          <View
+            className={`${tabName === "Podcasts" ? "bg-[#3BE377]" : "bg-[#333333]"} rounded-full px-6 py-2`}
+          >
+            <Text
+              onPress={() => setTabName("Podcasts")}
+              className={` ${tabName === "Podcasts" ? "text-[#333333]" : "text-[#FFFFFF]"}  text-lg`}
+            >
+              Podcasts
+            </Text>
           </View>
         </View>
 
-        <TopMixes />
+        {tabName === "All" && (
+          <View>
+            <Header />
 
-        <PopularAlbums />
+            <TopMixes />
 
-        <Recents />
+            <PopularAlbums />
 
-        <RecommendedForYou />
+            <Recents />
+
+            <RecommendedForYou />
+          </View>
+        )}
+
+        {tabName === "Music" && (
+          <View>
+            <Music />
+          </View>
+        )}
+
+        {tabName === "Podcasts" && (
+          <View>
+            <Podcasts />
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
