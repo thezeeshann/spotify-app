@@ -1,5 +1,6 @@
 import { View, Text, Image, ScrollView } from "react-native";
 import React from "react";
+import { Link } from "expo-router";
 
 const TopMixes = () => {
   return (
@@ -11,12 +12,14 @@ const TopMixes = () => {
         showsHorizontalScrollIndicator={false}
       >
         <View className="flex flex-row mt-4 gap-x-4">
-          <Image
-            className="w-[150px] h-[150px]"
-            source={{
-              uri: "https://seed-mix-image.spotifycdn.com/v6/img/artist/6DARBhWbfcS9E4yJzcliqQ/en/default",
-            }}
-          />
+          <Link href={`artist/${2}`}>
+            <Image
+              className="w-[150px] h-[150px]"
+              source={{
+                uri: "https://seed-mix-image.spotifycdn.com/v6/img/artist/6DARBhWbfcS9E4yJzcliqQ/en/default",
+              }}
+            />
+          </Link>
           <Image
             className="w-[150px] h-[150px]"
             source={{

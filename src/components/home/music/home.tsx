@@ -3,12 +3,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Music = () => {
   return (
-    <SafeAreaView className="h-full bg-[#000000] border-2 border-red-500">
+    <SafeAreaView className="h-full bg-[#000000]">
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <View className="flex flex-row flex-wrap w-full border-2 border-red-500 gap-x-2 gap-y-2">
+        <View className="flex flex-row flex-wrap w-full gap-x-2 gap-y-2 ">
           <View className=" bg-[#333333] flex flex-row flex-wrap items-center gap-x-3 w-[160px] rounded-md ">
             <Image
               source={{
