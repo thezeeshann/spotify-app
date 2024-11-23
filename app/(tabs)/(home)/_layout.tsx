@@ -33,8 +33,10 @@ export default function Layout() {
           headerTintColor: "white",
           headerTitle: () => (
             <View className="">
-              <Text className="ml-20 text-white">PLAYING FROM ARTIST</Text>
-              <Text className="ml-20 font-bold text-white"> Shubh</Text>
+              <Text className="ml-20 text-xs text-white">
+                PLAYING FROM ARTIST
+              </Text>
+              <Text className="ml-[100px] font-bold text-white"> Shubh</Text>
             </View>
           ),
           headerRight: () => (

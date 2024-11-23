@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocalSearchParams, Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -12,13 +12,55 @@ import {
   Dimensions,
   StatusBar,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { songs } from "@/data/song.json";
+import { Audio } from "expo-av";
 
+interface Song {
+  id: number;
+  title: string;
+  artist: string;
+  artwork: string;
+  artwork_bg_color?: string;
+  mp4_link?: string;
+}
 const ArtistSongDetails = () => {
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentSong, setCurrentSong] = useState<Song | null>(null);
+  console.log(currentSong);
   const { artistId } = useLocalSearchParams();
   const screenWidth = Dimensions.get("window").width;
+
+  const playSong = async (song: Song) => {
+    try {
+      if (sound) {
+        await sound.unloadAsync();
+      }
+      const { sound: newSound } = await Audio.Sound.createAsync(
+        { uri: song.mp4_link },
+        { shouldPlay: true }
+      );
+
+      setSound(newSound);
+      setCurrentSong(song);
+      setIsPlaying(true);
+
+      await newSound.playAsync();
+    } catch (error) {
+      console.error("Error playing sound:", error);
+    }
+  };
+
+  const pauseSound = async () => {
+    if (sound) {
+      await sound.pauseAsync();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <View>
@@ -73,127 +115,67 @@ const ArtistSongDetails = () => {
           {/* popular */}
 
           <ScrollView
-            style={{ height: 270 }} // Define height explicitly
+            style={{ height: 270 }}
             contentContainerStyle={{ paddingBottom: 20 }}
             showsVerticalScrollIndicator={false}
           >
             <Text className="mt-6 text-xl font-bold text-white ">Popular</Text>
             <View className="flex flex-col mt-5 gap-y-4">
-              <View className="flex flex-row items-center justify-between ">
-                <View className="flex flex-row items-center gap-x-4">
-                  <Text className="font-bold text-white">1</Text>
-                  <Image
-                    source={{
-                      uri: "https://i.pinimg.com/736x/68/51/8d/68518d3ee08506d0a97047bdb1499a13.jpg",
-                    }}
-                    className="w-[50px] h-[50px] "
-                  />
-                  <View className="flex flex-col">
-                    <Text className="text-white">One Love</Text>
-                    <Text className="text-[#dfd3d3]">268,774,820</Text>
+              <FlatList
+                data={songs}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <View className="flex flex-row items-center justify-between">
+                    <View className="flex flex-row items-center gap-x-4">
+                      <Text className="font-bold text-white">
+                        {item.id + 1}
+                      </Text>
+                      <Image
+                        source={{
+                          uri: item.artwork,
+                        }}
+                        className="w-[50px] h-[50px]"
+                      />
+                      <View className="flex flex-col">
+                        <Text className="text-white">{item.title}</Text>{" "}
+                        <Text className="text-[#dfd3d3]">
+                          {item.artist.slice(0, 16)}
+                        </Text>
+                      </View>
+                    </View>
+                    <View className="flex flex-row items-center gap-x-4">
+                      {/* <Ionicons
+                        name="checkmark-circle"
+                        size={24}
+                        color="#1ED760"
+                      /> */}
+                      <TouchableOpacity>
+                        {isPlaying === true ? (
+                          <Entypo
+                            onPress={() => pauseSound()}
+                            name="controller-paus"
+                            size={30}
+                            color="#ffffff"
+                          />
+                        ) : (
+                          <Entypo
+                            onPress={() => playSong(item)}
+                            name="controller-play"
+                            size={30}
+                            color="#ffffff"
+                          />
+                        )}
+                        {/* <Entypo name="controller-paus" size={30} color="#ffffff" /> */}
+                      </TouchableOpacity>
+                      <MaterialCommunityIcons
+                        name="dots-vertical"
+                        size={28}
+                        color="#ffffff"
+                      />
+                    </View>
                   </View>
-                </View>
-                <View className="flex flex-row items-center gap-x-4">
-                  <Ionicons name="checkmark-circle" size={24} color="#1ED760" />
-                  <MaterialCommunityIcons
-                    name="dots-vertical"
-                    size={28}
-                    color="#ffffff"
-                  />
-                </View>
-              </View>
-              <View className="flex flex-row items-center justify-between">
-                <View className="flex flex-row items-center gap-x-4">
-                  <Text className="font-bold text-white">1</Text>
-                  <Image
-                    source={{
-                      uri: "https://i.pinimg.com/736x/68/51/8d/68518d3ee08506d0a97047bdb1499a13.jpg",
-                    }}
-                    className="w-[50px] h-[50px] "
-                  />
-                  <View className="flex flex-col">
-                    <Text className="text-white">One Love</Text>
-                    <Text className="text-[#dfd3d3]">268,774,820</Text>
-                  </View>
-                </View>
-                <View className="flex flex-row items-center gap-x-4">
-                  {/* <Ionicons name="checkmark-circle" size={24} color="#1ED760" /> */}
-                  <MaterialCommunityIcons
-                    name="dots-vertical"
-                    size={28}
-                    color="#ffffff"
-                  />
-                </View>
-              </View>
-              <View className="flex flex-row items-center justify-between">
-                <View className="flex flex-row items-center gap-x-4">
-                  <Text className="font-bold text-white">1</Text>
-                  <Image
-                    source={{
-                      uri: "https://i.pinimg.com/736x/68/51/8d/68518d3ee08506d0a97047bdb1499a13.jpg",
-                    }}
-                    className="w-[50px] h-[50px] "
-                  />
-                  <View className="flex flex-col">
-                    <Text className="text-white">One Love</Text>
-                    <Text className="text-[#dfd3d3]">268,774,820</Text>
-                  </View>
-                </View>
-                <View className="flex flex-row items-center gap-x-4">
-                  {/* <Ionicons name="checkmark-circle" size={24} color="#1ED760" /> */}
-                  <MaterialCommunityIcons
-                    name="dots-vertical"
-                    size={28}
-                    color="#ffffff"
-                  />
-                </View>
-              </View>
-              <View className="flex flex-row items-center justify-between">
-                <View className="flex flex-row items-center gap-x-4">
-                  <Text className="font-bold text-white">1</Text>
-                  <Image
-                    source={{
-                      uri: "https://i.pinimg.com/736x/68/51/8d/68518d3ee08506d0a97047bdb1499a13.jpg",
-                    }}
-                    className="w-[50px] h-[50px] "
-                  />
-                  <View className="flex flex-col">
-                    <Text className="text-white">One Love</Text>
-                    <Text className="text-[#dfd3d3]">268,774,820</Text>
-                  </View>
-                </View>
-                <View className="flex flex-row items-center gap-x-4">
-                  {/* <Ionicons name="checkmark-circle" size={24} color="#1ED760" /> */}
-                  <MaterialCommunityIcons
-                    name="dots-vertical"
-                    size={28}
-                    color="#ffffff"
-                  />
-                </View>
-              </View>
-              <View className="flex flex-row items-center justify-between">
-                <View className="flex flex-row items-center gap-x-4">
-                  <Text className="font-bold text-white">1</Text>
-                  <Image
-                    source={{
-                      uri: "https://i.pinimg.com/736x/68/51/8d/68518d3ee08506d0a97047bdb1499a13.jpg",
-                    }}
-                    className="w-[50px] h-[50px] "
-                  />
-                  <View className="flex flex-col">
-                    <Text className="text-white">One Love</Text>
-                    <Text className="text-[#dfd3d3]">268,774,820</Text>
-                  </View>
-                </View>
-                <View className="flex flex-row items-center gap-x-4">
-                  {/* <Ionicons name="checkmark-circle" size={24} color="#1ED760" /> */}
-                  <MaterialCommunityIcons
-                    name="dots-vertical"
-                    size={28}
-                    color="#ffffff"
-                  />
-                </View>
-              </View>
+                )}
+              />
             </View>
           </ScrollView>
 
