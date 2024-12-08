@@ -1,14 +1,96 @@
-[
-  {
-    "id": 1,
-    "artistsName": "A.R Rahman",
-    "category": "Artist",
-    "image": "https://i.pinimg.com/564x/8a/33/7e/8a337e8142145d98801ea4a5700d60fb.jpg"
-  },
-  {
-    "id": 2,
-    "artistsName": "Arijit Singh",
-    "category": "Artist",
-    "image": "https://i.pinimg.com/564x/b9/52/e0/b952e054e9951d34077a5a3b75889b02.jpg"
-  }
-]
+{
+  "artists": [
+    {
+      "id": 1,
+      "artistsName": "A.R. Rahman",
+      "category": "Artist",
+      "image": "https://i.pinimg.com/736x/52/92/07/529207df7c4bc295b64ff00c1a09a38d.jpg",
+      "songs": [
+        {
+          "songId": 1,
+          "songName": "Jai Ho",
+          "songImage": "",
+          "album": "Slumdog Millionaire"
+        },
+        {
+          "songId": 102,
+          "songName": "Kun Faya Kun",
+          "album": "Rockstar"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "artistsName": "Arijit Singh",
+      "category": "Artist",
+      "image": "https://i.pinimg.com/736x/21/fc/12/21fc12055b778f675f30dd373d17c520.jpg",
+      "songs": [
+        {
+          "songId": 201,
+          "songName": "Tum Hi Ho",
+          "album": "Aashiqui 2"
+        },
+        {
+          "songId": 202,
+          "songName": "Channa Mereya",
+          "album": "Ae Dil Hai Mushkil"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "artistsName": "The Joe Rogan Experience",
+      "artist": "Joe Rogan",
+      "category": "Podcast",
+      "image": "https://i.pinimg.com/736x/49/74/18/497418b7b469946f5941ddf71608bdb6.jpg",
+      "songs": [
+        {
+          "songId": 201,
+          "songName": "Tum Hi Ho",
+          "album": "Aashiqui 2"
+        },
+        {
+          "songId": 202,
+          "songName": "Channa Mereya",
+          "album": "Ae Dil Hai Mushkil"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "artistsName": "Shubh",
+      "category": "Artist",
+      "image": "https://i.scdn.co/image/ab676161000051748f553f96d564d1005a92d131",
+      "songs": [
+        {
+          "songId": 201,
+          "songName": "Tum Hi Ho",
+          "album": "Aashiqui 2"
+        },
+        {
+          "songId": 202,
+          "songName": "Channa Mereya",
+          "album": "Ae Dil Hai Mushkil"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "artistsName": "Yoo",
+      "category": "Playlist",
+      "image": "https://i.pinimg.com/736x/bb/76/10/bb761041e3a71b270c025e28891a2f33.jpg",
+      "songs": [
+        {
+          "songId": 201,
+          "songName": "Tum Hi Ho",
+          "album": "Aashiqui 2"
+        },
+        {
+          "songId": 202,
+          "songName": "Channa Mereya",
+          "album": "Ae Dil Hai Mushkil"
+        }
+      ]
+    }
+  ]
+}
