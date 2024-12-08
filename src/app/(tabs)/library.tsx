@@ -3,7 +3,7 @@ import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Octicons from "@expo/vector-icons/Octicons";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { artists } from "@/data/artists.json";
+import { artists } from "@/src/data/artists.json";
 import { useState } from "react";
 
 export default function App() {

@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { songs } from "@/data/song.json";
+import { songs } from "@/src/data/song.json";
 import { Audio } from "expo-av";
 
 interface Song {
@@ -33,7 +33,7 @@ const ArtistSongDetails = () => {
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   console.log(currentSong);
   const { artistId } = useLocalSearchParams();
-  console.log(artistId)
+  console.log(artistId);
   const screenWidth = Dimensions.get("window").width;
 
   const playSong = async (song: Song) => {

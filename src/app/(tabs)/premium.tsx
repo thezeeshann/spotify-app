@@ -2,8 +2,8 @@ import { Text, ScrollView, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import PremiumAvailableCard from "@/components/premium/premium-available-plan";
-import PremiumCard from "@/components/premium/premium-card";
+import PremiumAvailableCard from "@/src/components/premium/premium-available-plan";
+import PremiumCard from "@/src/components/premium/premium-card";
 
 export default function App() {
   return (

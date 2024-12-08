@@ -1,7 +1,7 @@
 import { ScrollView, TextInput, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
-import SearchCard from "@/components/search/search-card";
+import SearchCard from "@/src/components/search/search-card";
 
 export default function App() {
   return (

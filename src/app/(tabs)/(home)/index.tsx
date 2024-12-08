@@ -6,14 +6,14 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
-import PopularAlbums from "@/components/home/popular-albums";
-import TopMixes from "@/components/home/top-mixes";
-import RecommendedForYou from "@/components/home/recommended-for-you";
-import Recents from "@/components/home/recent";
-import Header from "@/components/home/header";
+import PopularAlbums from "@/src/components/home/popular-albums";
+import TopMixes from "@/src/components/home/top-mixes";
+import RecommendedForYou from "@/src/components/home/recommended-for-you";
+import Recents from "@/src/components/home/recent";
+import Header from "@/src/components/home/header";
 import { useState } from "react";
-import Music from "@/components/home/music/home";
-import Podcasts from "@/components/home/podcasts/home";
+import Music from "@/src/components/home/music/home";
+import Podcasts from "@/src/components/home/podcasts/home";
 
 export default function App() {
   const [tabName, setTabName] = useState("All");
