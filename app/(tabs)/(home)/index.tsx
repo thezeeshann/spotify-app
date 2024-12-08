@@ -1,5 +1,11 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, Text, View, StatusBar } from "react-native";
+import {
+  ScrollView,
+  Text,
+  View,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
 import PopularAlbums from "@/components/home/popular-albums";
 import TopMixes from "@/components/home/top-mixes";
 import RecommendedForYou from "@/components/home/recommended-for-you";
@@ -24,36 +30,36 @@ export default function App() {
           barStyle={"light-content"}
         />
         <View className="flex flex-row flex-wrap items-center mt-6 gap-x-2 gap-y-2">
-          <View
+          <TouchableOpacity
+            onPress={() => setTabName("All")}
             className={`${tabName === "All" ? "bg-[#3BE377]" : "bg-[#333333]"} rounded-full px-6 py-2`}
           >
             <Text
-              onPress={() => setTabName("All")}
-              className={` ${tabName === "All" ? "text-[#333333]" : "text-[#FFFFFF]"}  text-lg`}
+              className={` ${tabName === "All" ? "text-[#333333]" : "text-[#FFFFFF]"} `}
             >
               All
             </Text>
-          </View>
-          <View
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setTabName("Music")}
             className={`${tabName === "Music" ? "bg-[#3BE377]" : "bg-[#333333]"} rounded-full px-6 py-2`}
           >
             <Text
-              onPress={() => setTabName("Music")}
-              className={` ${tabName === "Music" ? "text-[#333333]" : "text-[#FFFFFF]"}  text-lg`}
+              className={` ${tabName === "Music" ? "text-[#333333]" : "text-[#FFFFFF]"}  `}
             >
               Music
             </Text>
-          </View>
-          <View
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setTabName("Podcasts")}
             className={`${tabName === "Podcasts" ? "bg-[#3BE377]" : "bg-[#333333]"} rounded-full px-6 py-2`}
           >
             <Text
-              onPress={() => setTabName("Podcasts")}
-              className={` ${tabName === "Podcasts" ? "text-[#333333]" : "text-[#FFFFFF]"}  text-lg`}
+              className={` ${tabName === "Podcasts" ? "text-[#333333]" : "text-[#FFFFFF]"} `}
             >
               Podcasts
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         {tabName === "All" && (
