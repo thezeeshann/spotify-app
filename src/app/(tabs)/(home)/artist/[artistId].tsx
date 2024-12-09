@@ -17,51 +17,13 @@ import {
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { songs } from "@/src/data/song.json";
-import { Audio } from "expo-av";
+import { useAudio } from "@/src/context/audio-context";
 
-interface Song {
-  id: number;
-  title: string;
-  artist: string;
-  artwork: string;
-  artwork_bg_color?: string;
-  mp4_link?: string;
-}
 const ArtistSongDetails = () => {
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentSong, setCurrentSong] = useState<Song | null>(null);
-  console.log(currentSong);
+  const { playSound, pauseSound, togglePlayPause, isPlaying } = useAudio();
   const { artistId } = useLocalSearchParams();
   console.log(artistId);
   const screenWidth = Dimensions.get("window").width;
-
-  const playSong = async (song: Song) => {
-    try {
-      if (sound) {
-        await sound.unloadAsync();
-      }
-      const { sound: newSound } = await Audio.Sound.createAsync(
-        { uri: song.mp4_link },
-        { shouldPlay: true }
-      );
-
-      setSound(newSound);
-      setCurrentSong(song);
-      setIsPlaying(true);
-
-      await newSound.playAsync();
-    } catch (error) {
-      console.error("Error playing sound:", error);
-    }
-  };
-
-  const pauseSound = async () => {
-    if (sound) {
-      await sound.pauseAsync();
-      setIsPlaying(false);
-    }
-  };
 
   return (
     <View>
@@ -115,71 +77,6 @@ const ArtistSongDetails = () => {
           </View>
           {/* popular */}
 
-          {/* <ScrollView
-            style={{ height: 270 }}
-            contentContainerStyle={{ paddingBottom: 20 }}
-            showsVerticalScrollIndicator={false}
-          >
-            <Text className="mt-6 text-xl font-bold text-white ">Popular</Text>
-            <View className="flex flex-col mt-5 gap-y-4">
-              <FlatList
-                data={songs}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                  <View className="flex flex-row items-center justify-between">
-                    <View className="flex flex-row items-center gap-x-4">
-                      <Text className="font-bold text-white">
-                        {item.id + 1}
-                      </Text>
-                      <Image
-                        source={{ uri: item.artwork }}
-                        className="w-[50px] h-[50px]"
-                      />
-                      <View className="flex flex-col">
-                        <Text className="text-white">{item.title}</Text>
-                        <Text className="text-[#dfd3d3]">
-                          {item.artist.slice(0, 16)}
-                        </Text>
-                      </View>
-                    </View>
-                    <View className="flex flex-row items-center gap-x-4">
-                      <TouchableOpacity>
-                        {isPlaying ? (
-                          <Entypo
-                            onPress={() => pauseSound()}
-                            name="controller-paus"
-                            size={30}
-                            color="#ffffff"
-                          />
-                        ) : (
-                          <Entypo
-                            onPress={() => playSong(item)}
-                            name="controller-play"
-                            size={30}
-                            color="#ffffff"
-                          />
-                        )}
-                      </TouchableOpacity>
-                      <MaterialCommunityIcons
-                        name="dots-vertical"
-                        size={28}
-                        color="#ffffff"
-                      />
-                    </View>
-                  </View>
-                )}
-                ListHeaderComponent={
-                  <>
-                    <Text className="mt-6 text-xl font-bold text-white">
-                      Popular
-                    </Text>
-                  </>
-                }
-                contentContainerStyle={{ paddingBottom: 20 }}
-                showsVerticalScrollIndicator={false}
-              />
-            </View>
-          </ScrollView> */}
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={{ height: 270 }}
@@ -193,9 +90,7 @@ const ArtistSongDetails = () => {
                 renderItem={({ item }) => (
                   <View className="flex flex-row items-center justify-between">
                     <View className="flex flex-row items-center gap-x-4">
-                      <Text className="font-bold text-white">
-                        {item.id + 1}
-                      </Text>
+                      <Text className="font-bold text-white">{item.id}</Text>
                       <Image
                         source={{ uri: item.artwork }}
                         className="w-[50px] h-[50px]"
@@ -218,7 +113,7 @@ const ArtistSongDetails = () => {
                           />
                         ) : (
                           <Entypo
-                            onPress={() => playSong(item)}
+                            onPress={() => playSound(item)}
                             name="controller-play"
                             size={30}
                             color="#ffffff"
