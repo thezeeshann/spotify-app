@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { Audio } from "expo-av";
-import { songs } from "@/src/data/song.json";
+// import { songs } from "@/src/data/song.json";
 
 interface Song {
   id: number;
@@ -79,6 +79,17 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       console.error("Error playing sound:", error);
     }
   };
+
+  // const playRandomSound = async (song: Song) => {
+  //   try {
+  //     if (sound) {
+  //       await sound.unloadAsync();
+  //     }
+  //     const randomSong = songs[Math.floor(Math.random() * song.length)];
+  //   } catch (error) {
+  //     console.log("error playing sound", error);
+  //   }
+  // };
 
   const pauseSound = async () => {
     if (sound) {

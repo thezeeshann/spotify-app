@@ -20,10 +20,23 @@ import { songs } from "@/src/data/song.json";
 import { useAudio } from "@/src/context/audio-context";
 
 const ArtistSongDetails = () => {
-  const { playSound, pauseSound, togglePlayPause, isPlaying } = useAudio();
+  const { playSound, pauseSound, isPlaying, togglePlayPause, currentSong } =
+    useAudio();
   const { artistId } = useLocalSearchParams();
-  console.log(artistId);
   const screenWidth = Dimensions.get("window").width;
+
+  const playRandomSong = () => {
+    const random = songs[Math.floor(Math.random() * songs.length)];
+    playSound(random);
+  };
+
+  const handlePlayPause = (song) => {
+    if (currentSong?.id === song.id && isPlaying) {
+      pauseSound(); // Pause if the same song is playing
+    } else {
+      playSound(song); // Play the selected song
+    }
+  };
 
   return (
     <View>
@@ -72,7 +85,14 @@ const ArtistSongDetails = () => {
                 size={35}
                 color="#1ED760"
               />
-              <AntDesign name="play" size={45} color="#1ED760" />
+              <AntDesign
+                name={isPlaying === true ? "pause" : "play"}
+                size={45}
+                color="#1ED760"
+                onPress={() => {
+                  currentSong ? pauseSound() : playSound(songs[0]);
+                }}
+              />
             </View>
           </View>
           {/* popular */}
@@ -103,17 +123,15 @@ const ArtistSongDetails = () => {
                       </View>
                     </View>
                     <View className="flex flex-row items-center gap-x-4">
-                      <TouchableOpacity>
-                        {isPlaying ? (
+                      <TouchableOpacity onPress={() => handlePlayPause(item)}>
+                        {currentSong?.id === item.id && isPlaying ? (
                           <Entypo
-                            onPress={() => pauseSound()}
                             name="controller-paus"
                             size={30}
                             color="#ffffff"
                           />
                         ) : (
                           <Entypo
-                            onPress={() => playSound(item)}
                             name="controller-play"
                             size={30}
                             color="#ffffff"
